@@ -1,0 +1,24 @@
+# Prometheus scrape configuration for the Week 8 monitoring lab.
+#
+# Deployed to /etc/prometheus/prometheus.yml on the Ubuntu VM.
+# Validate before reloading:   promtool check config /etc/prometheus/prometheus.yml
+# Apply:                       sudo systemctl restart prometheus
+# Verify targets:              curl -s http://localhost:9090/api/v1/targets
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  # Prometheus scrapes its own metrics so the server itself is observable.
+  - job_name: "prometheus"
+    scrape_interval: 5s
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  # Host level metrics (CPU, memory, disk, filesystem, network, uptime).
+  # The job is named node_exporter so the target is self describing in
+  # the targets API, in Grafana variables and in alert rule labels.
+  - job_name: "node_exporter"
+    static_configs:
+      - targets: ["localhost:9100"]
