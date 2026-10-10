@@ -15,6 +15,10 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/bionic64"
   config.vm.box_version = "20230607.0.5"
 
+  # The host is slow to start this VM. Allow up to 15 minutes before Vagrant
+  # gives up, instead of the 300 second default.
+  config.vm.boot_timeout = 900
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -24,7 +28,11 @@ Vagrant.configure("2") do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # NOTE: This will enable public access to the opened port
-  config.vm.network "forwarded_port", guest: 8080, host: 8080
+  config.vm.network "forwarded_port", guest: 8080, host: 8080    # Jenkins
+  config.vm.network "forwarded_port", guest: 30080, host: 30080 # Kubernetes NodePort
+  config.vm.network "forwarded_port", guest: 9090, host: 9090   # Prometheus
+  config.vm.network "forwarded_port", guest: 9100, host: 9100   # Node Exporter
+  config.vm.network "forwarded_port", guest: 3000, host: 3000   # Grafana
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine and only allow access
@@ -63,7 +71,9 @@ Vagrant.configure("2") do |config|
 
     # Customize the amount of memory on the VM:
     vb.memory = "4096"
-	vb.cpus = 2
+  # Reduced from 2 to 1 after the host was observed starving the guest,
+  # which produced kernel RCU stall warnings and distorted timings.
+    vb.cpus = 1
   end
   #
   # View the documentation for the provider you are using for more
