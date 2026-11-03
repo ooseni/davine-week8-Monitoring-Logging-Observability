@@ -1,0 +1,85 @@
+<mxfile host="Electron" agent="aws-architecture-diagrams" version="31.4.5">
+  <diagram name="Monitoring stack" id="monitoring-stack">
+    <mxGraphModel dx="1160" dy="670" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1160" pageHeight="670" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="host" value="Windows 11 host: VirtualBox and Vagrant" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#7D8998;dashed=1;strokeWidth=1.5;verticalAlign=top;align=left;spacingLeft=10;fontFamily=Arial;fontSize=16;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="40" y="130" width="1080" height="510" as="geometry" />
+        </mxCell>
+        <mxCell id="vm" value="Ubuntu VM: 4 GB RAM, 1 vCPU" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#7D8998;dashed=0;strokeWidth=1.5;verticalAlign=top;align=left;spacingLeft=10;fontFamily=Arial;fontSize=16;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="290" y="180" width="810" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="e-stress-ne" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=8;strokeColor=#232F3E;strokeWidth=1.5;fontFamily=Arial;fontSize=16;fontColor=#232F3E;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="stress" target="ne">
+          <mxGeometry relative="1" as="geometry"></mxGeometry>
+        </mxCell>
+        <mxCell id="e-stress-ne-label" value="CPU load" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=#FFFFFF;fontFamily=Arial;fontSize=16;fontColor=#232F3E;" vertex="1" connectable="0" parent="e-stress-ne">
+          <mxGeometry x="0.4" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e-ne-prom" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=8;strokeColor=#232F3E;strokeWidth=1.5;fontFamily=Arial;fontSize=16;fontColor=#232F3E;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ne" target="prom">
+          <mxGeometry relative="1" as="geometry"></mxGeometry>
+        </mxCell>
+        <mxCell id="e-prom-graf" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=8;strokeColor=#232F3E;strokeWidth=1.5;fontFamily=Arial;fontSize=16;fontColor=#232F3E;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="prom" target="graf">
+          <mxGeometry relative="1" as="geometry"></mxGeometry>
+        </mxCell>
+        <mxCell id="e-graf-alert" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=8;strokeColor=#232F3E;strokeWidth=1.5;fontFamily=Arial;fontSize=16;fontColor=#232F3E;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="graf" target="alert">
+          <mxGeometry relative="1" as="geometry"></mxGeometry>
+        </mxCell>
+        <mxCell id="e-alert-logs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=8;strokeColor=#232F3E;strokeWidth=1.5;fontFamily=Arial;fontSize=16;fontColor=#232F3E;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="alert" target="logs">
+          <mxGeometry relative="1" as="geometry"></mxGeometry>
+        </mxCell>
+        <mxCell id="e-alert-logs-label" value="investigate" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=#FFFFFF;fontFamily=Arial;fontSize=16;fontColor=#232F3E;" vertex="1" connectable="0" parent="e-alert-logs">
+          <mxGeometry x="-0.4" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="e-browser-graf" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=8;strokeColor=#232F3E;strokeWidth=1.5;fontFamily=Arial;fontSize=16;fontColor=#232F3E;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="browser" target="graf">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="160" y="565" /><mxPoint x="800" y="565" /></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="e-browser-graf-label" value="localhost:3000" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=#FFFFFF;fontFamily=Arial;fontSize=16;fontColor=#232F3E;" vertex="1" connectable="0" parent="e-browser-graf">
+          <mxGeometry x="0" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="ne" value="Node Exporter&lt;br&gt;&lt;font color=&quot;#5A6C86&quot;&gt;:9100 /metrics&lt;/font&gt;" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#232F3E;strokeWidth=1.5;fontFamily=Arial;fontSize=16;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="315" y="258" width="170" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="prom" value="Prometheus&lt;br&gt;&lt;font color=&quot;#5A6C86&quot;&gt;:9090&lt;/font&gt;" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#232F3E;strokeWidth=1.5;fontFamily=Arial;fontSize=16;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="525" y="258" width="150" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="graf" value="Grafana&lt;br&gt;&lt;font color=&quot;#5A6C86&quot;&gt;:3000&lt;/font&gt;" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#232F3E;strokeWidth=1.5;fontFamily=Arial;fontSize=16;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="725" y="258" width="150" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="alert" value="Alert rule&lt;br&gt;&lt;font color=&quot;#5A6C86&quot;&gt;CPU &amp;gt; 80% for 30 s&lt;/font&gt;" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#232F3E;strokeWidth=1.5;fontFamily=Arial;fontSize=16;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="915" y="258" width="170" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="stress" value="stress&lt;br&gt;&lt;font color=&quot;#5A6C86&quot;&gt;2 CPU workers&lt;/font&gt;" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#232F3E;strokeWidth=1.5;fontFamily=Arial;fontSize=16;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="315" y="438" width="170" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="logs" value="Linux logs&lt;br&gt;&lt;font color=&quot;#5A6C86&quot;&gt;journal, syslog&lt;/font&gt;" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#232F3E;strokeWidth=1.5;fontFamily=Arial;fontSize=16;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="915" y="438" width="170" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="browser" value="Browser&lt;br&gt;&lt;font color=&quot;#5A6C86&quot;&gt;on the host&lt;/font&gt;" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#232F3E;strokeWidth=1.5;fontFamily=Arial;fontSize=16;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="75" y="438" width="170" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="step-1" value="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=none;fontFamily=Arial;fontSize=19;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="354.5" y="396.5" width="35" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="step-2" value="2" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=none;fontFamily=Arial;fontSize=19;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="482.5" y="220.5" width="35" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="step-3" value="3" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=none;fontFamily=Arial;fontSize=19;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="682.5" y="220.5" width="35" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="step-4" value="4" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=none;fontFamily=Arial;fontSize=19;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="882.5" y="220.5" width="35" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="step-5" value="5" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=none;fontFamily=Arial;fontSize=19;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1010.5" y="396.5" width="35" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="step-6" value="6" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=none;fontFamily=Arial;fontSize=19;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="212.5" y="517.5" width="35" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="Monitoring, Logging and Observability Lab&lt;br&gt;&lt;span style=&quot;font-size:17px;font-weight:normal&quot;&gt;Davine Technology internship, week 8: one Ubuntu VM&lt;/span&gt;" style="text;html=1;fontFamily=Arial;align=left;verticalAlign=top;strokeColor=none;fillColor=none;fontSize=29;fontStyle=1;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="40" y="24" width="1000" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
