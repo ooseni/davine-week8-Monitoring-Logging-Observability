@@ -1,6 +1,10 @@
 # Monitoring, Logging and Observability
 
-**Lab date:** October 2026 | **Type:** Davine Technology DevOps internship, week 8 deliverable | **Status:** done, phases 1 to 9 of 12; ELK, Alertmanager and Ansible are next
+<img alt="Davine Technologies Internship Project" src="https://img.shields.io/badge/Davine%20Technologies-Internship%20Project-6E40C9">
+
+**Lab date:** October 2026 | **Type:** Davine Technologies Internship Project, DevOps internship week 8 lab | **Status:** done, phases 1 to 9 of 12; ELK, Alertmanager and Ansible are next
+
+> **Evaluation project.** A learning task completed for the Davine Technologies internship programme. Everything runs on one local Vagrant VM with a synthetic CPU spike. It is not a production deployment and contains no company data.
 
 **At a glance**
 
